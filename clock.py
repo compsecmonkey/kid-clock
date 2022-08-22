@@ -13,7 +13,7 @@ class GUI():
 
         # Create clock layout
         clock = [
-            [sg.T('', pad=((220, 0), 0)),
+            [sg.T('', pad=((0, 0), 0)),
              sg.Image(data=ledblank, key='-HOUR1-'),
              sg.Image(data=ledblank, key='-HOUR2-'),
              sg.Image(data=ledblank, key='-COLON-'),
@@ -22,7 +22,11 @@ class GUI():
 
 
         # Create the overall layout
-        layout = [[sg.Column(clock, background_color='black')]]
+        layout = [
+            [sg.Text(key='-EXPAND-', font='ANY 1', pad=(0, 0))],
+            [sg.Text('', pad=(0, 0), key='-EXPAND2-'),
+             sg.Column(clock, background_color='black', vertical_alignment='center', justification='center',  k='-C-')]
+        ]
 
         # Create the window
         self.window = sg.Window('Clock', layout,
@@ -36,6 +40,9 @@ class GUI():
                                 size=sg.Window.get_screen_size(),
                                 finalize=True)
         self.window.Maximize()
+        self.window['-C-'].expand(True, True, True)
+        self.window['-EXPAND-'].expand(True, True, True)
+        self.window['-EXPAND2-'].expand(True, False, True)
 
         self.colon_elem = self.window.find_element('-COLON-')
         self.hour1 = self.window.find_element('-HOUR1-')
