@@ -32,7 +32,8 @@ class GUI():
                                 no_titlebar=True,
                                 #alpha_channel=.8,  # set an alpha channel if want transparent
                                 enable_close_attempted_event=True,
-                                location=(0, 0), size=(800, 600),
+                                location=(0, 0),
+                                size=sg.Window.get_screen_size(),
                                 finalize=True)
         self.window.Maximize()
 
