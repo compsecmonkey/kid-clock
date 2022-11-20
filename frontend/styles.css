@@ -1,6 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
 
-* {background-color: black}
+* {
+    background-color: black;
+    color:black;
+}
+
+#api_data {
+    background-color: black;
+    color: greenyellow;
+    display: none;
+}
 
 #digital-clock {
     background-color: black;

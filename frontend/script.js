@@ -21,9 +21,9 @@ function Time() {
 
     hour = update(hour);
     minute = update(minute);
-   
+
     document.getElementById("digital-clock").innerText = hour + " : " + minute + " " + period;
-    document.getElementById("digital-clock").style.color = "black";
+    //document.getElementById("digital-clock").style.color = "black";
     // Set Timer to 1 sec (1000 ms)
     setTimeout(Time, 1000);
 }
@@ -38,3 +38,31 @@ function update(t) {
     }
 }
 Time();
+
+
+// api url
+const api_url =
+    "http://localho.st:5000/";
+
+// Defining async function
+async function getapi(url) {
+
+    // Storing response
+    const response = await fetch(url);
+
+    // Storing data in form of JSON
+    var data = await response.json();
+    console.log(data);
+    show(data);
+}
+// Calling that async function
+getapi(api_url);
+
+// Function to define innerHTML for HTML table
+function show(data) {
+    let h3_data =
+        `${data.msg}`;
+    // Setting innerHTML as tab variable
+    document.getElementById("api_data").innerHTML = h3_data;
+    document.getElementById("digital-clock").style.color = data.clock_color;
+}
